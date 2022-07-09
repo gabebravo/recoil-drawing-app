@@ -27,14 +27,30 @@ const euroSelector = selector<number>({
     key: 'euro',
     get: ({get}) => {
         // destructured get here is the helper to get other atom's state
-        const usd = get(usdAtom)
+        let usd = get(usdAtom)
+
+        // if commission is enabled, this will calculate the exchange, minus the commission
+        const commissionEnabled = get(commissionEnabledAtom)
+        if (commissionEnabled) {
+            const commission = get(commissionAtom)
+            usd = removeCommission(usd, commission)
+        }
+
         return usd * exchangeRate
     },
-    set: ({set}, newEuroVal) => {
-        // this makes the selector settable
+    set: ({set, get}, newEuroVal) => {
+        // set makes the selector able to set the atoms value
         // @ts-ignore
-        const newEuValue = newEuroVal / exchangeRate
-        set(usdAtom, newEuValue) // NOTE : syntax of set(atomToSet, newValue)
+        let newUsdValue = newEuroVal / exchangeRate
+
+        // if commission is enabled, this will calculate the exchange, minus the commission
+        const commissionEnabled = get(commissionEnabledAtom)
+        if (commissionEnabled) {
+            const commission = get(commissionAtom)
+            newUsdValue = addCommission(newUsdValue, commission)
+        }
+
+        set(usdAtom, newUsdValue) // NOTE : syntax of set(atomToSet, newValue)
     },
 })
 
