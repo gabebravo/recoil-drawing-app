@@ -27,6 +27,7 @@
     "react-scripts": "4.0.1",
     "recoil": "^0.7.4",
     "recoilize": "^3.1.6",
+    "shortid": "^2.2.16",
     "typescript": "^4.0.3",
     "web-vitals": "^0.2.4"
   },
@@ -55,6 +56,7 @@
     ]
   },
   "devDependencies": {
-    "@types/recoilize": "^0.8.0"
+    "@types/recoilize": "^0.8.0",
+    "@types/shortid": "^0.0.29"
   }
 }

@@ -4,6 +4,7 @@ import './index.css'
 import Canvas from './Canvas'
 import Atoms from './examples/Atoms'
 import Selectors from './examples/Selectors'
+import AtomFamily from './examples/AtomFamily'
 import RecoilizeDebugger from 'recoilize'
 import {ChakraProvider} from '@chakra-ui/react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
@@ -24,6 +25,9 @@ ReactDOM.render(
                         </Route>
                         <Route exact path="/examples/selectors">
                             <Selectors />
+                        </Route>
+                        <Route exact path="/examples/atom-family">
+                            <AtomFamily />
                         </Route>
                     </Switch>
                 </Router>
