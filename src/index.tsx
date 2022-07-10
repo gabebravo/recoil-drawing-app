@@ -4,6 +4,7 @@ import './index.css'
 import Canvas from './Canvas'
 import Atoms from './examples/Atoms'
 import Selectors from './examples/Selectors'
+import RecoilizeDebugger from 'recoilize'
 import {ChakraProvider} from '@chakra-ui/react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import {RecoilRoot} from 'recoil'
@@ -11,6 +12,7 @@ import {RecoilRoot} from 'recoil'
 ReactDOM.render(
     <React.StrictMode>
         <RecoilRoot>
+            <RecoilizeDebugger />
             <ChakraProvider>
                 <Router>
                     <Switch>
