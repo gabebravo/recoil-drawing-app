@@ -9,7 +9,8 @@ import RecoilizeDebugger from 'recoilize'
 import {ChakraProvider} from '@chakra-ui/react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import {RecoilRoot} from 'recoil'
-import Async from './examples/Async'
+import AsyncBasic from './examples/AsyncBasic'
+import AsyncAdv from './examples/AsyncAdv'
 
 ReactDOM.render(
     <React.StrictMode>
@@ -30,11 +31,16 @@ ReactDOM.render(
                         <Route exact path="/examples/atom-family">
                             <AtomFamily />
                         </Route>
-                        <Route exact path="/examples/async">
+                        <Route exact path="/examples/async-basic">
                             {/* A SUSPENSE FALLBACK IS REQUIRED BY RECOIL (recoil suspends during async/await) 
                                 when making api calls using the recoil hook in a component */}
                             <Suspense fallback={<div>Loading...</div>}>
-                                <Async />
+                                <AsyncBasic />
+                            </Suspense>
+                        </Route>
+                        <Route exact path="/examples/async-advanced">
+                            <Suspense fallback={<div>Loading...</div>}>
+                                <AsyncAdv />
                             </Suspense>
                         </Route>
                     </Switch>
